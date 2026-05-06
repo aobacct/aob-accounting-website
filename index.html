@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AOB Accounting LLC</title>
+  <meta name="description" content="AOB Accounting LLC provides virtual bookkeeping, individual income tax preparation, payroll, B&O and sales tax reports, and accounting setup support for small businesses." />
+
+  <style>
+    :root {
+      --charcoal: #333333;
+      --charcoal-dark: #171717;
+      --forest: #1F3D2B;
+      --forest-deep: #10231A;
+      --gold: #C9A96A;
+      --offwhite: #F7F5F2;
+      --gray: #E3E2E1;
+      --white: #ffffff;
+      --ink: #252525;
+      --muted: #66615a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Avenir Next", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+      color: var(--charcoal);
+      background: var(--offwhite);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1320px, 94%);
+      margin: 0 auto;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .gold-line {
+      width: 68px;
+      height: 2px;
+      background: var(--gold);
+      margin: 18px 0 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 52px;
+      padding: 0 26px;
+      border-radius: 0;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .button.gold {
+      background: var(--gold);
+      color: var(--charcoal);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .arrow {
+      color: var(--charcoal);
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      transform: translateY(-1px);
+    }
+
+    header {
+      color: var(--white);
+      min-height: 690px;
+      background:
+        linear-gradient(90deg, rgba(18,18,18,0.98) 0%, rgba(22,22,22,0.95) 40%, rgba(27,38,31,0.78) 72%, rgba(66,96,77,0.42) 100%),
+        radial-gradient(circle at 76% 30%, rgba(201,169,106,0.16), transparent 28%),
+        linear-gradient(135deg, #151515 0%, #252525 58%, #3e3a34 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      right: -4%;
+      top: 120px;
+      width: 58%;
+      height: 78%;
+      background:
+        linear-gradient(90deg, rgba(23,23,23,0.96), rgba(23,23,23,0.54)),
+        radial-gradient(circle at 60% 34%, rgba(247,245,242,0.12), transparent 24%),
+        linear-gradient(135deg, rgba(31,61,43,0.46), rgba(51,51,51,0.1));
+      opacity: 0.78;
+      filter: blur(1px);
+      pointer-events: none;
+    }
+
+    nav {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 30px;
+      padding: 34px 0 0;
+      margin-bottom: 104px;
+    }
+
+    .brand-logo {
+      width: 185px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      color: rgba(255,255,255,0.92);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 800;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-links .nav-cta {
+      color: var(--gold);
+      border: 1px solid rgba(201,169,106,0.72);
+      padding: 14px 18px;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 2;
+      max-width: 980px;
+      padding-bottom: 92px;
+    }
+
+    h1 {
+      font-size: clamp(46px, 6vw, 78px);
+      line-height: 1.04;
+      color: var(--white);
+      margin-bottom: 0;
+    }
+
+    .hero p {
+      max-width: 560px;
+      color: rgba(255,255,255,0.78);
+      font-size: 16px;
+      line-height: 1.9;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .next-step-note {
+      color: rgba(255,255,255,0.78);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      max-width: 420px;
+      line-height: 1.5;
+    }
+
+    .hero-strip {
+      position: relative;
+      z-index: 3;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.18);
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .hero-strip-item {
+      padding: 26px 34px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      border-right: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.84);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+    }
+
+    .hero-strip-item:last-child {
+      border-right: 0;
+    }
+
+    .strip-icon {
+      color: var(--gold);
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    .strip-icon svg {
+      display: block;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    section.light {
+      background: var(--offwhite);
+    }
+
+    section.white {
+      background: var(--white);
+    }
+
+    section.dark {
+      background: linear-gradient(135deg, var(--forest) 0%, #0e2118 100%);
+      color: var(--white);
+    }
+
+    .section-center {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 48px;
+    }
+
+    h2 {
+      font-size: clamp(34px, 4vw, 50px);
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    .dark h2 {
+      color: var(--white);
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 760px;
+    }
+
+    .dark .intro {
+      color: rgba(255,255,255,0.78);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 1240px;
+      margin: 0 auto;
+      border-top: 1px solid rgba(201,169,106,0.36);
+      border-bottom: 1px solid rgba(201,169,106,0.36);
+    }
+
+    .service-card {
+      padding: 52px 42px;
+      text-align: center;
+      border-right: 1px solid rgba(201,169,106,0.36);
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .service-card:nth-child(3) {
+      border-right: 0;
+    }
+
+    .services-bottom-row {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      border-top: 1px solid rgba(201,169,106,0.36);
+    }
+
+    .services-bottom-row .service-card {
+      width: 36%;
+      border-top: 0;
+    }
+
+    .services-bottom-row .service-card:first-child {
+      border-left: 1px solid rgba(201,169,106,0.36);
+    }
+
+    .services-bottom-row .service-card:last-child {
+      border-right: 1px solid rgba(201,169,106,0.36);
+    }
+
+    .service-card h3 {
+      color: var(--forest);
+      font-size: 24px;
+      margin: 14px 0 12px;
+      line-height: 1.2;
+    }
+
+    .service-card p {
+      color: #625f5a;
+      font-size: 15px;
+      line-height: 1.8;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 52px;
+      align-items: center;
+    }
+
+    .about-text {
+      display: grid;
+      gap: 16px;
+      color: #57534d;
+      font-size: 16px;
+    }
+
+    .education-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 390px;
+      border-radius: 0;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(112,154,124,0.24), transparent 22%),
+        linear-gradient(135deg, #486f58 0%, #2d5140 42%, #14291f 100%);
+      border: 1px solid rgba(201,169,106,0.32);
+      padding: 36px;
+      color: var(--white);
+    }
+
+    .education-card::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 46%;
+      height: 100%;
+      background: linear-gradient(to left, rgba(16,35,26,0.72), rgba(16,35,26,0.08));
+      opacity: 0.42;
+      pointer-events: none;
+    }
+
+    .education-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 62%;
+      background: rgba(16,35,26,0.58);
+      border-left: 3px solid var(--gold);
+      padding: 22px 24px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+    }
+
+    .education-card h3 {
+      color: var(--gold);
+      font-size: 34px;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+    }
+
+    .education-inner strong {
+      color: var(--white);
+      font-size: 17px;
+    }
+
+    .education-inner p {
+      color: rgba(255,255,255,0.80);
+      margin-top: 4px;
+      margin-bottom: 20px;
+    }
+
+    .roadmap {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .roadmap::before {
+      content: "";
+      position: absolute;
+      left: 8%;
+      right: 8%;
+      top: 42px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.5;
+    }
+
+    .road-card {
+      position: relative;
+      z-index: 2;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      padding: 24px 20px;
+      min-height: 205px;
+    }
+
+    .road-num {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      background: var(--gold);
+      color: var(--charcoal);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .road-card h3 {
+      color: var(--gold);
+      font-size: 23px;
+      margin-bottom: 10px;
+    }
+
+    .road-card p {
+      color: rgba(255,255,255,0.78);
+      font-size: 14px;
+    }
+
+    .prepare-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+    }
+
+    .prepare-card {
+      background: var(--white);
+      border: 1px solid var(--gray);
+      padding: 32px;
+      box-shadow: 0 18px 44px rgba(51,51,51,0.05);
+    }
+
+    .prepare-card h3 {
+      color: var(--forest);
+      font-size: 27px;
+      margin-bottom: 16px;
+    }
+
+    .prepare-card li {
+      color: #5f5b56;
+      margin-bottom: 9px;
+      line-height: 1.7;
+    }
+
+    .prepare-card ul {
+      padding-left: 22px;
+    }
+
+    .nested {
+      margin-top: 8px;
+      margin-left: 18px;
+      padding-left: 18px;
+    }
+
+    .nested li {
+      margin-bottom: 6px;
+    }
+
+    .nested ul {
+      margin-top: 6px;
+      margin-left: 12px;
+    }
+
+    .cta {
+      background: linear-gradient(135deg, #171717, var(--charcoal));
+      color: var(--white);
+      padding: 70px 0;
+    }
+
+    .cta-box {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 40px;
+      align-items: center;
+      border-top: 1px solid rgba(201,169,106,0.35);
+      padding-top: 40px;
+    }
+
+    .cta h2 {
+      color: var(--white);
+    }
+
+    .cta p {
+      color: rgba(255,255,255,0.78);
+      margin-bottom: 22px;
+    }
+
+    .contact-list {
+      color: rgba(255,255,255,0.82);
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-list strong {
+      color: var(--gold);
+    }
+
+    footer {
+      background: #151515;
+      color: rgba(255,255,255,0.72);
+      padding: 34px 0;
+      font-size: 14px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      header::after {
+        display: none;
+      }
+
+      nav {
+        flex-direction: column;
+        margin-bottom: 90px;
+      }
+
+      .nav-links {
+        gap: 18px;
+      }
+
+      .brand-logo {
+        width: 160px;
+      }
+
+      .hero-actions {
+        flex-wrap: wrap;
+      }
+
+      .hero-strip-grid,
+      .services-grid,
+      .about-layout,
+      .roadmap,
+      .prepare-grid,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card,
+      .service-card:nth-child(3),
+      .services-bottom-row .service-card {
+        border-right: 0;
+        border-left: 0;
+        border-top: 1px solid rgba(201,169,106,0.36);
+        width: 100%;
+      }
+
+      .service-card:first-child {
+        border-top: 0;
+      }
+
+      .services-bottom-row {
+        display: block;
+        border-top: 0;
+      }
+
+      .education-inner {
+        max-width: 100%;
+      }
+
+      .education-card::after {
+        opacity: 0.25;
+      }
+
+      .roadmap::before {
+        display: none;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 32px, 1320px);
+      }
+
+      header {
+        min-height: auto;
+      }
+
+      nav {
+        margin-bottom: 64px;
+      }
+
+      .nav-links {
+        font-size: 11px;
+        gap: 14px;
+      }
+
+      h1 {
+        font-size: clamp(42px, 13vw, 58px);
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .button {
+        width: 100%;
+        text-align: center;
+        padding: 0 18px;
+      }
+
+      .next-step-note {
+        font-size: 11px;
+      }
+
+      .hero-strip-item {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.12);
+      }
+
+      .hero-strip-item:last-child {
+        border-bottom: 0;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+
+      .service-card {
+        padding: 36px 24px;
+      }
+
+      .education-card {
+        padding: 28px;
+      }
+
+      .education-card h3 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header id="home">
+    <div class="container">
+      <nav>
+        <a href="#home" aria-label="AOB Accounting LLC home">
+          <img class="brand-logo" src="./aob-logo-gold.png" alt="AOB Accounting LLC logo" />
+        </a>
+
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#consultation">Process</a>
+          <a href="#client-services">Prepare</a>
+          <a href="#contact" class="nav-cta">Contact</a>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div class="eyebrow">Fully Remote Accounting Support</div>
+        <h1>Clear accounting support for individuals and their small businesses.</h1>
+        <div class="gold-line"></div>
+        <p>Work with your accountant from anywhere. AOB Accounting LLC provides approachable bookkeeping, individual income tax preparation, payroll, B&amp;O and sales tax reports, and accounting setup support for small businesses.</p>
+
+        <div class="hero-actions">
+          <a class="button gold" href="YOUR_MICROSOFT_FORMS_LINK_HERE" target="_blank" rel="noopener">
+            Start Pre-Consultation Questionnaire <span class="arrow">➜</span>
+          </a>
+          <span class="next-step-note">After submitting the questionnaire, you’ll receive the consultation booking link.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-strip">
+      <div class="container hero-strip-grid">
+        <div class="hero-strip-item">
+          <span class="strip-icon">⌂</span>
+          <span>Serving clients across Washington</span>
+        </div>
+
+        <div class="hero-strip-item">
+          <span class="strip-icon laptop-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M5 6.5C5 5.67 5.67 5 6.5 5H17.5C18.33 5 19 5.67 19 6.5V14H5V6.5Z" fill="currentColor"/>
+              <path d="M3 16H21L19.8 18.5C19.55 19 19.04 19.33 18.48 19.33H5.52C4.96 19.33 4.45 19 4.2 18.5L3 16Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span>Fully remote and flexible</span>
+        </div>
+
+        <div class="hero-strip-item">
+          <span class="strip-icon plant-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 20V11.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M12 11.5C12 8.9 14.2 7 17.2 7C16.9 9.9 15.2 11.8 12 11.5Z" fill="currentColor"/>
+              <path d="M12 11.7C12 9.1 9.9 7.3 6.8 7.3C7.2 10.1 8.9 11.9 12 11.7Z" fill="currentColor" opacity="0.9"/>
+            </svg>
+          </span>
+          <span>Focused on clarity and growth</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="services" class="light">
+      <div class="container">
+        <div class="section-center">
+          <div class="eyebrow">Services</div>
+          <h2>Accounting services built around your business.</h2>
+          <div class="gold-line" style="margin-left:auto;margin-right:auto;"></div>
+          <p class="intro" style="margin-left:auto;margin-right:auto;">Services are designed to help clients stay organized, understand their numbers, and stay compliant.</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>Bookkeeping</h3>
+            <p>Monthly bookkeeping including transaction categorization, reconciliations, financial reporting, and organized records that support better business decisions.</p>
+          </div>
+
+          <div class="service-card">
+            <h3>Individual Income Taxes</h3>
+            <p>Individual income tax preparation (personal Form 1040 returns for business clients only).</p>
+          </div>
+
+          <div class="service-card">
+            <h3>B&amp;O and Sales Tax Reports</h3>
+            <p>State and city B&amp;O and sales tax reports, including filings such as WA DOR reports.</p>
+          </div>
+
+          <div class="services-bottom-row">
+            <div class="service-card">
+              <h3>Payroll</h3>
+              <p>Payroll processing and year-end payroll reporting.</p>
+            </div>
+
+            <div class="service-card">
+              <h3>Small Business Accounting Setup</h3>
+              <p>Support for starting an LLC, obtaining an EIN, setting up QuickBooks, and related accounting setup needs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="white">
+      <div class="container about-layout">
+        <div>
+          <div class="eyebrow">About AOB Accounting LLC</div>
+          <h2>Built on clarity, care, and technical depth.</h2>
+          <div class="gold-line"></div>
+
+          <div class="about-text">
+            <p>AOB Accounting was built on the belief that financial clarity creates stability, opportunity, and peace of mind.</p>
+            <p>Founder Alejandra Ortiz Briseño knew from a young age accounting was her calling and has spent over a decade intentionally building the knowledge and experience to serve small businesses and individuals with care and integrity.</p>
+            <p>Before launching AOB Accounting, Alejandra worked at CPA firms, including a Top 20 firm, supporting high-net-worth and ultra-high-net-worth individuals. Earlier in her career, she also worked with small businesses through smaller CPA firms, building hands-on experience in bookkeeping, payroll, compliance, and day-to-day accounting operations.</p>
+            <p>At the heart of the firm is a strong commitment to community, especially the Hispanic community. AOB Accounting strives to be a trusted, approachable partner that brings clarity to the numbers and helps clients make confident decisions for long-term growth.</p>
+          </div>
+        </div>
+
+        <aside class="education-card">
+          <h3>Education built on accounting and tax depth.</h3>
+
+          <div class="education-inner">
+            <strong>Master of Science in Taxation</strong>
+            <p>University of Washington — Foster School of Business, Seattle</p>
+
+            <strong>Bachelor of Arts in Business Administration - Accounting</strong>
+            <p>University of Washington — Milgard School of Business, Tacoma</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="consultation" class="dark">
+      <div class="container">
+        <div class="eyebrow">Process</div>
+        <h2>Your accounting roadmap.</h2>
+        <p class="intro">AOB Accounting is fully remote, making the process convenient, flexible, and accessible. Clients can work with their accountant from anywhere while keeping the process organized and clear.</p>
+
+        <div class="roadmap">
+          <div class="road-card">
+            <div class="road-num">1</div>
+            <h3>Questionnaire</h3>
+            <p>Complete the pre-consultation questionnaire so we can review your needs before the consultation.</p>
+          </div>
+
+          <div class="road-card">
+            <div class="road-num">2</div>
+            <h3>Consultation</h3>
+            <p>Book a free 30–45 minute virtual consultation to see if we are a good fit to work together.</p>
+            <p style="margin-top:10px;font-size:11px;line-height:1.5;color:rgba(255,255,255,0.58);font-style:italic;">
+              * Based on questionnaire responses,
+              <a href="#accounting-records" style="color:rgba(255,255,255,0.58);text-decoration:underline;text-decoration-color:rgba(255,255,255,0.32);text-underline-offset:3px;">accounting records</a>
+              may be requested before the meeting.
+            </p>
+          </div>
+
+          <div class="road-card">
+            <div class="road-num">3</div>
+            <h3>Engagement Letter</h3>
+            <p>If AOB Accounting can support your needs, an engagement letter will outline services, scope, pricing, and next steps.</p>
+          </div>
+
+          <div class="road-card">
+            <div class="road-num">4</div>
+            <h3>Onboarding</h3>
+            <p>Once accepted, onboarding begins through a fully remote and organized process.</p>
+          </div>
+        </div>
+
+        <div class="hero-actions" style="margin-top:32px;">
+          <a class="button gold" href="YOUR_MICROSOFT_FORMS_LINK_HERE" target="_blank" rel="noopener">
+            Fill Out Pre-Consultation Questionnaire <span class="arrow">➜</span>
+          </a>
+          <span class="next-step-note">The consultation booking link is provided after the questionnaire is submitted.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="client-services" class="light">
+      <div class="container">
+        <div class="section-center">
+          <div class="eyebrow">Prepare</div>
+          <h2>What to bring to the consultation.</h2>
+          <div class="gold-line" style="margin-left:auto;margin-right:auto;"></div>
+          <p class="intro" style="margin-left:auto;margin-right:auto;">Clients do not need everything perfectly organized. Bring what is available, and we can discuss what is missing during the consultation.</p>
+        </div>
+
+        <div class="prepare-grid">
+          <div class="prepare-card">
+            <h3 id="accounting-records">Accounting Records</h3>
+
+            <ul>
+              <li>Bank statements, if available</li>
+              <li>QuickBooks access or reports, if applicable</li>
+              <li>Previous individual income tax returns</li>
+              <li>Monthly, quarterly, or annual excise tax returns, such as WA DOR reports</li>
+              <li>Payroll: copies of the most recent annual and quarterly payroll tax returns, if applicable
+                <ul class="nested">
+                  <li>Federal
+                    <ul class="nested">
+                      <li>Forms W-3, W-2, 940, and 941</li>
+                    </ul>
+                  </li>
+                  <li>State
+                    <ul class="nested">
+                      <li>ESD</li>
+                      <li>L&amp;I</li>
+                      <li>PFML</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="prepare-card">
+            <h3>Questions and Goals</h3>
+
+            <ul>
+              <li>What do you need help with now?</li>
+              <li>Are there any notices or deadlines?</li>
+              <li>What are your goals for your business or finances?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="cta">
+      <div class="container cta-box">
+        <div>
+          <div class="gold-line"></div>
+          <h2>Ready to take the next step?</h2>
+        </div>
+
+        <div>
+          <p>Complete the pre-consultation questionnaire first. After submitting it, you’ll receive the booking link for your 30–45 minute virtual consultation.</p>
+
+          <div class="hero-actions">
+            <a class="button gold" href="YOUR_MICROSOFT_FORMS_LINK_HERE" target="_blank" rel="noopener">
+              Fill Out Questionnaire <span class="arrow">➜</span>
+            </a>
+          </div>
+
+          <div class="contact-list" style="margin-top:28px;">
+            <p><strong>Email:</strong> <a href="mailto:YOUR_EMAIL_HERE">YOUR_EMAIL_HERE</a></p>
+            <p><strong>Phone:</strong> <a href="tel:YOUR_PHONE_HERE">YOUR_PHONE_HERE</a></p>
+            <p><strong>Location:</strong> Fully remote accounting services based in Washington State</p>
+            <p><strong>Payments:</strong> Online payment link coming soon.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <p>© <span id="year"></span> AOB Accounting LLC. All rights reserved.</p>
+      <p>Bookkeeping | Individual Income Tax Preparation | Payroll | B&amp;O and Sales Tax Reports</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
