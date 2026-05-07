@@ -124,8 +124,26 @@
 
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
-   nav {
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 135px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8,17,13,0.42) 0%,
+      rgba(8,17,13,0.22) 52%,
+      rgba(8,17,13,0) 100%
+    );
+
+  z-index: 1;
+  pointer-events: none;
+}
+    nav {
   position: relative;
   z-index: 3;
   display: flex;
