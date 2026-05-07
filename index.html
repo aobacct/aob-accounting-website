@@ -108,29 +108,23 @@
       transform: translateY(-1px);
     }
 
-    header {
-    color: var(--white);
-    min-height: 620px;
+   header {
+  color: var(--white);
+  min-height: 690px;
 
-    background:
+  background:
     linear-gradient(
-        90deg,
-        rgba(18,18,18,0.98) 0%,
-        rgba(18,18,18,0.96) 36%,
-        rgba(18,18,18,0.74) 52%,
-        rgba(18,18,18,0.42) 72%,
-        rgba(18,18,18,0.22) 100%
-    ),
-    url("./hero-desks.png");
+      90deg,
+      #10231A 0%,
+      #10231A 18%,
+      #13281E 38%,
+      #193326 62%,
+      #284438 100%
+    );
 
-background-size: cover;
-background-position: center right;
-background-repeat: no-repeat;
-
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
-
     nav {
       position: relative;
       z-index: 3;
@@ -139,7 +133,7 @@ background-repeat: no-repeat;
       align-items: flex-start;
       gap: 30px;
       padding: 72px 0 0;
-      margin-bottom: 72px;
+      margin-bottom: 104px;
     }
 
     .brand-logo {
@@ -212,13 +206,12 @@ background-repeat: no-repeat;
       line-height: 1.5;
     }
 
-    .hero-strip {
-      position: relative;
-      z-index: 3;
-      border-top: 1px solid rgba(255,255,255,0.12);
-      background: rgba(0,0,0,0.18);
-      backdrop-filter: blur(4px);
-    }
+   .hero-strip {
+  position: relative;
+  z-index: 3;
+  border-top: 1px solid rgba(247,245,242,0.14);
+  background: rgba(16,35,26,0.72);
+}
 
     .hero-strip-grid {
       display: grid;
@@ -731,8 +724,12 @@ background-repeat: no-repeat;
     <div class="hero-strip">
       <div class="container hero-strip-grid">
         <div class="hero-strip-item">
-          <span class="strip-icon">⌂</span>
-          <span>Serving clients across Washington</span>
+<span class="strip-icon">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z" stroke="currentColor" stroke-width="1.7"/>
+    <circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.7"/>
+  </svg>
+</span>          <span>Serving clients across Washington</span>
         </div>
 
         <div class="hero-strip-item">
