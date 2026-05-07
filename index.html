@@ -109,16 +109,26 @@
     }
 
     header {
-      color: var(--white);
-      min-height: 690px;
-      background:
-        linear-gradient(90deg, rgba(18,18,18,0.98) 0%, rgba(22,22,22,0.95) 40%, rgba(27,38,31,0.78) 72%, rgba(66,96,77,0.42) 100%),
-        radial-gradient(circle at 76% 30%, rgba(201,169,106,0.16), transparent 28%),
-        linear-gradient(135deg, #151515 0%, #252525 58%, #3e3a34 100%);
-      position: relative;
-      overflow: hidden;
-    }
+    color: var(--white);
+    min-height: 690px;
 
+    background:
+        linear-gradient(
+            90deg,
+            rgba(18,18,18,0.96) 0%,
+            rgba(18,18,18,0.88) 38%,
+            rgba(18,18,18,0.45) 62%,
+            rgba(18,18,18,0.25) 100%
+        ),
+        url("./hero-desk.png");
+
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+
+    position: relative;
+    overflow: hidden;
+}
     header::after {
       content: "";
       position: absolute;
