@@ -253,7 +253,7 @@ header::before {
     .hero-strip-item:last-child {
       border-right: 0;
     }
-
+    
     .strip-icon {
       color: var(--gold);
       font-size: 24px;
@@ -806,11 +806,22 @@ header::before {
     border-right: 0;
     border-bottom: 1px solid rgba(255,255,255,0.10);
   }
-
+     
+  .service-card {
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-top: 1px solid rgba(201,169,106,0.22);
+  border-bottom: 0;
+}
+     
   .hero-strip-item:last-child {
     border-bottom: 0;
   }
+.service-card:last-child {
+  border-bottom: 1px solid rgba(201,169,106,0.22);
+}    
 } 
+    
   </style>
 </head>
 
